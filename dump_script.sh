@@ -16,7 +16,7 @@ if [ $? -ne 0 ]
       echo "=======Pacote pv já instalado======="
 fi
 echo
-echo -e "Escolha a opção desejada: \n1 - Dump completo\n2 - Dump excluido as tabelas maiores"
+echo -e "Escolha a opção desejada: \n1 - Dump completo\n2 - Dump excluido as tabelas history trends"
 echo
 
 while :

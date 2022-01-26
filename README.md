@@ -18,7 +18,7 @@ Escolha uma das opções para dump:
 ```
 Escolha a opção desejada: 
 1 - Dump completo
-2 - Dump excluido as tabelas maiores
+2 - Dump excluido as tabelas history e trends
 ```
 
 Após finalizar o processo de backup, caso queira testar o restore do banco:
