@@ -39,8 +39,10 @@ chmod +x dump_script_postgresql.sh
 O Backup é slavo no /tmp altere conforme a necessidade 
 
 Caso utilize Timescaledb deve se criar novalmente a extensão
+
 ```
- echo "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;" | sudo -u postgres psql zabbix
+sudo -u postgres createdb -O zabbix zabbix --> cria banco 
+echo "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;" | sudo -u postgres psql zabbix
 ```
 Feito realize o restore 
 ```
