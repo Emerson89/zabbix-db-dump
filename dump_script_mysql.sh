@@ -24,7 +24,7 @@ do
   read INPUT
   case $INPUT in
        1)
-         mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | pv | bzip2 > "$DBNAME-`date +%Y-%m-%d`.sql.bz2"
+         mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | pv | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
          echo
          sleep 2
          echo "=======Backup Realizado======"
@@ -43,7 +43,7 @@ do
          --ignore-table="$DBNAME.history_uint_sync" \
          --ignore-table="$DBNAME.trends" \
          --ignore-table="$DBNAME.trends_uint" \
-        | pv | bzip2 > "$DBNAME-`date +%Y-%m-%d`.sql.bz2"
+        | pv | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
          
          echo
          echo "=======Backup realizado======="
