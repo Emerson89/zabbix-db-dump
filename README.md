@@ -11,9 +11,9 @@ Editar os seguintes campos no script:
 - DBPASS=SENHABANCO
 
 ```
-chmod +x dump_script_mysql.sh
+chmod +x dump_script.sh
 
-./dump_script_mysql.sh
+./dump_script.sh
 ```
 Escolha uma das opções para dump:
 
