@@ -48,6 +48,10 @@ Feito realize o restore
 ```
 zcat /tmp/zabbix-2022-03-11-12:08.sql.gz | psql -U zabbix zabbix
 ```
+## Utiliza cron
+
+Basta utilizar o exemplo cron altere o tipo do banco conformed a necessidade
+
 No exemplo cron a rotina de retenção de arquivo de backups para um 1 dia utilizando find altere conforme a necessidade
 ```
 find /tmp -type f -name "*.gz" -mtime 1 -exec rm -f {} \;
