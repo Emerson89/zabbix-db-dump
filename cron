@@ -1,6 +1,5 @@
 ##EXEMPLO CRON
 
-[root@rocky-srv vagrant]# crontab -l
 # Example of job definition:
 # .---------------- minute (0 - 59)
 # |  .------------- hour (0 - 23)
@@ -10,7 +9,7 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
-00 18 * * * ~/dump_script_postgres.sh
+00 18 * * * ~/dump_postgres_full.sh
 or
-00 18 * * * ~/dump_script_mysql.sh
+00 18 * * * ~/dump_mysql.sh
 15 18 * * * /usr/bin/find /tmp -type f -name "*.gz" -mtime 1 -exec rm -f {} \;

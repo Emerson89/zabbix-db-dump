@@ -32,16 +32,22 @@ sudo gunzip < DBNAME-schema.sql.gz | mysql -u USUARIO -p DBNAME
 ## Para backup postgresql
 
 ```
-chmod +x dump_script_postgresql.sh
+chmod +x dump_postgresql_full.sh
 
-./dump_script_postgresql.sh
-```
-O Backup é slavo no /tmp altere conforme a necessidade 
-
-Caso utilize Timescaledb deve se criar novalmente a extensão
+./dump_postgresql_full.sh 
+or
+./dump_postgresql_exclude.sh
 
 ```
-sudo -u postgres createdb -O zabbix zabbix --> cria banco 
+O Backup é salvo no /tmp altere conforme a necessidade 
+
+Caso utilize Timescaledb deve se criar novamente a extensão
+
+```
+sudo -u postgres createdb -O zabbix zabbix --> cria database
+or
+create database zabbix with owner "zabbix" enconding "UTF8" template "template0";
+
 echo "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;" | sudo -u postgres psql zabbix
 ```
 Feito realize o restore 

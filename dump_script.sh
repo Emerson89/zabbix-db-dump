@@ -4,17 +4,6 @@ DBNAME=NAMEDB
 DBUSER=USERBANCO
 DBPASS=SENHABANCO
 
-rpm -qs pv &> /dev/null
-if [ $? -ne 0 ]
-   then
-      echo "=======Pacote pv não instalado======="
-      sleep 3
-      echo "=======Instalando pv=========="
-      sudo yum install pv -y
-   else
-      echo
-      echo "=======Pacote pv já instalado======="
-fi
 echo
 echo -e "Escolha a opção desejada: \n1 - Dump completo\n2 - Dump excluido as tabelas history trends"
 echo
@@ -24,7 +13,7 @@ do
   read INPUT
   case $INPUT in
        1)
-         mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | pv | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
+         mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
          echo
          sleep 2
          echo "=======Backup Realizado======"
@@ -43,7 +32,7 @@ do
          --ignore-table="$DBNAME.history_uint_sync" \
          --ignore-table="$DBNAME.trends" \
          --ignore-table="$DBNAME.trends_uint" \
-        | pv | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
+        | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
          
          echo
          echo "=======Backup realizado======="
