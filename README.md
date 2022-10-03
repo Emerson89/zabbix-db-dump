@@ -4,6 +4,10 @@
 
 Este script realiza o backup do schema do banco
 
+Para alguns banco mysql é preciso colocar o parametro --set-gtid-purged=OFF
+```
+mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction --set-gtid-purged=OFF | gzip > "$DBNAME-`date +%Y-%m-%d-%H-%M`.sql.gz"
+```
 Editar os seguintes campos no script:
 
 - DBNAME=NAMEDB
