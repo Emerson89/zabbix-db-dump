@@ -4,6 +4,10 @@
 
 Este script realiza o backup do schema do banco
 
+Select para verificar espaço usado do banco mysql
+```
+SELECT table_schema "Database", ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) "Size(MB)" FROM information_schema.tables GROUP BY table_schema;
+```
 Para alguns banco mysql é preciso colocar o parametro --set-gtid-purged=OFF
 ```
 mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction --set-gtid-purged=OFF | gzip > "$DBNAME-`date +%Y-%m-%d-%H-%M`.sql.gz"
