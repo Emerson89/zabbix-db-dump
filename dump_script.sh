@@ -3,6 +3,7 @@
 DBNAME=NAMEDB
 DBUSER=USERBANCO
 DBPASS=SENHABANCO
+DBHOST="127.0.0.1"
 
 echo
 echo -e "Escolha a opção desejada: \n1 - Dump completo\n2 - Dump excluido as tabelas history trends"
@@ -13,7 +14,7 @@ do
   read INPUT
   case $INPUT in
        1)
-         mysqldump --no-tablespaces -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
+         mysqldump --no-tablespaces -h"$DBHOST" -u"$DBUSER" -p"$DBPASS" "$DBNAME" --single-transaction | gzip > "$DBNAME-`date +%Y-%m-%d`.sql.gz"
          echo
          sleep 2
          echo "=======Backup Realizado======"
@@ -21,7 +22,7 @@ do
          break
          ;;
        2)
-         mysqldump --no-tablespaces -u"$DBUSER"  -p"$DBPASS" "$DBNAME" --single-transaction \
+         mysqldump --no-tablespaces -h"$DBHOST" -u"$DBUSER"  -p"$DBPASS" "$DBNAME" --single-transaction \
          --ignore-table="$DBNAME.history" \
          --ignore-table="$DBNAME.history_log" \
          --ignore-table="$DBNAME.history_str" \

@@ -17,6 +17,7 @@ Editar os seguintes campos no script:
 - DBNAME=NAMEDB
 - DBUSER=USERBANCO
 - DBPASS=SENHABANCO
+- DBHOST=127.0.0.1
 
 ```
 chmod +x dump_script.sh
@@ -39,10 +40,24 @@ sudo gunzip < DBNAME-schema.sql.gz | mysql -u USUARIO -p DBNAME
 
 ## Para backup postgresql
 
-```
-chmod +x dump_postgresql_full.sh
+Editar os seguintes campos no script:
 
-./dump_postgresql_full.sh 
+- DBUSER="zabbix"
+- DBPASS="zabbix"
+- DBHOST="127.0.0.1"
+- DBNAME="zabbix"
+
+
+Caso utilize o user zabbix deverá dar permissão para realizar o backup, recomendação é criar um user somente para backup
+
+```
+alter role <user-name> superuser;
+```
+
+```
+chmod +x dump_cron_postgresql_full.sh
+
+./dump_cron_postgresql_full.sh 
 or
 ./dump_postgresql_exclude.sh
 
@@ -64,7 +79,7 @@ zcat /tmp/zabbix-2022-03-11-12:08.sql.gz | psql -U zabbix zabbix
 ```
 ## Utiliza cron
 
-Basta utilizar o exemplo cron altere o tipo do banco conformed a necessidade
+Basta utilizar o exemplo cron altere o tipo do banco conforme a necessidade
 
 No exemplo cron a rotina de retenção de arquivo de backups para um 1 dia utilizando find altere conforme a necessidade
 ```

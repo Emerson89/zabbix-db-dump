@@ -9,7 +9,7 @@
 # |  |  |  |  |
 # *  *  *  *  * user-name  command to be executed
 
-00 18 * * * ~/dump_postgres_full.sh
-or
-00 18 * * * ~/dump_mysql.sh
+00 18 * * * ~/dump_cron_postgres_full.sh
+## or
+00 18 * * * ~/dump_cron_mysql.sh
 15 18 * * * /usr/bin/find /tmp -type f -name "*.gz" -mtime 1 -exec rm -f {} \;
