@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 DBUSER="zabbix"
 DBPASS="zabbix"
 DBHOST="127.0.0.1"
